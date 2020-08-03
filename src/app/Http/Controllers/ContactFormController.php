@@ -109,7 +109,7 @@ class ContactFormController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contact = new ContactForm;
+        $contact = ContactForm::find($id);
 
         $contact->shop_name = $request->input('shop_name');
         $contact->address = $request->input('address');

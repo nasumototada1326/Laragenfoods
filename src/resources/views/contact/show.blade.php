@@ -14,7 +14,7 @@
                         </div>
                     @endif
                 
-                    <div class="d-flex flex-column bd-highlight mb-3">
+                    <div class="d-flex flex-column bd-highlight mb-10">
                     <div class="p-2 bd-highlight">{{ $contact->shop_name }}</div>
                     <div class="p-2 bd-highlight">{{ $contact->address }}</div>
                     <div class="p-2 bd-highlight">{{ $contact->category }}</div>
@@ -24,16 +24,20 @@
                     <div class="d-flex justify-content-start">
                     <form method="GET" action="{{route('contact.edit', ['id' => $contact->id ])}}">
                     @csrf
-                    <input class="btn btn-info" type="submit" value="編集する"><br>
+                    <input class="btn btn-primary" type="submit" value="編集する">&ensp;<br>
                     </form>
                     <form method="POST" action="{{route('contact.destroy', ['id' => $contact->id ])}}" id="delete_{{ $contact->id }}">
                     @csrf                    
-                    <a href="#" class="btn btn-danger" data-id="{{ $contact->id }}" onclick="deletePost(this);">削除する</a>
+                    <a href="#" class="btn btn-danger" data-id="{{ $contact->id }}" onclick="deletePost(this);">削除する</a>&ensp;
                     </form>
+                    <form method="GET" action="{{route('contact.index')}}">
+                    @csrf  
+                    <input class="btn btn-success" type="submit" value="一覧に戻る">
                     </form>
                     </div>
                     <br>
-                    <iframe src="https://maps.google.co.jp/maps?output=embed&q={{ $contact->address }}"></iframe>
+                    <iframe src="https://maps.google.co.jp/maps?output=embed&q={{ $contact->address }}"width='100%'height='320'frameborder='0'>
+                    </iframe>
 
                 </div>
             </div>
